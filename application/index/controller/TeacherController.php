@@ -12,7 +12,7 @@ class TeacherController
         $teachers = $Teacher->select();
 
         // 获取第0个数据
-        $teacher = $teachers[0];
+        $teacher = $teachers[0];//
 
         // 调用上述对象的getData()方法
         var_dump($teacher->getData());
