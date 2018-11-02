@@ -42,10 +42,17 @@ class TeacherController extends Controller
         $Teacher->sex = $postData['sex'];
         $Teacher->email = $postData['email'];
         $Teacher->createtime = time();
+        
         // 新增对象至数据表
-        $Teacher->save();
+        $result = $Teacher->validate(true)->save();
+
         // 反馈结果
-        return  '新增成功。新增ID为:' . $Teacher->id;
+        if (false === $result)
+        {
+            return '新增失败:' . $Teacher->getError();
+        } else {
+            return  '新增成功。新增ID为:' . $Teacher->id;
+        }
     }
     //http://localhost/thinkphp5/public/index/teacher/indexs?a=0
     //http://localhost/thinkphp5/public/index/teacher/indexs?a=1
